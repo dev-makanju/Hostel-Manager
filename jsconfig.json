@@ -10,7 +10,8 @@
       ],
       "@/utils/*": [
         "utils/*"
-      ]
+      ],
+      
       // Add more paths for your project's specific directory structure
     }
   },
