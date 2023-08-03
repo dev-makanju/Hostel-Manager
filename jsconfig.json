@@ -1,29 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      
-      // Add more paths for your project's specific directory structure
+      "@/*": ["./src/*"]
     }
-  },
-  "include": [
-    "next-env.d.js",
-    "**/*.js",
-    "**/*.jsx",
-    ".next/types/**/*.js"
-  ],
-  "exclude": [
-    // "node_modules",
-    ".next",
-    "out"
-  ]
+  }
 }
