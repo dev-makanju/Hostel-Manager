@@ -1,5 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Header, Footer, SplashScreen } from '@/components'
+import usePathname from "next/navigation"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,9 +11,24 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  const [loading, setLoading] = useState(isHome)
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {loading ?
+          <SplashScreen /> :
+
+          <>
+            <Header />
+            {children}
+            <Footer />
+          </>
+        }
+
+      </body>
     </html>
   )
 }
