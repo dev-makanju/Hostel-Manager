@@ -1,5 +1,6 @@
 "use client"
 
+import './global.css'
 import { Inter } from 'next/font/google'
 import { Header, Footer, SplashScreen } from '@/components'
 import { usePathname } from "next/navigation"
