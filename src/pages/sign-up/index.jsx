@@ -1,9 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
-import { arrowLeft, screen, house2 } from '@/assets'
+import { arrowLeft, screen, house2 } from '@/assets';
 
-const Screen2 = ({ setShowOnboardingScreen }) => {
-
+const index = () => {
   return (
     <div className="relative h-screen px-5 " >
       <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
@@ -47,14 +45,8 @@ const Screen2 = ({ setShowOnboardingScreen }) => {
           </div>
         </div>
       </div>
-
-      <div className='md:hidden absolute inset-0 h-full -z-10 '>
-        <Image src={screen} className="mt-[70%]" alt='Onboarding_Bg'/>
-      </div>
     </div>
   )
 }
 
-export default Screen2
-
-// onClick={() => setNextPage(false)}
+export default index
