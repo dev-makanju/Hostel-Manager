@@ -10,6 +10,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
+      },
+      colors: {
+        'site-color': '#0E0E0E',
+        'variant1': '#C97B2C',
+        'variant2': '#ff49db',
+        'variant3': '#ff7849',
+      },
       backgroundImage: {
         'screen': "url('/screen.svg')",
         "reddd": "#f222ff",

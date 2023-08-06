@@ -18,7 +18,7 @@ const metadata = {
     apple: './favicon.svg',
   }
 }
-
+  
 export const siteMetadata = metadata;
 
 export default function RootLayout({ children }) {
@@ -26,21 +26,15 @@ export default function RootLayout({ children }) {
   const isHome = pathname === '/'
   const [loading, setLoading] = useState(isHome)
   // const [showOnboardingScreen, setShowOnboardingScreen] = useState(false)
-
-
-  // Check if the onboarding screen should be shown
   const [showOnboardingScreen, setShowOnboardingScreen] = useState(
-    !Cookies.get('visitedBefore') // Cookie check to see if the user has visited before
+    Cookies.get('visitedBefore') // Cookie check to see if the user has visited before
+    //set it back to false
   )
-
-
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 3000)
-
     Cookies.set('visitedBefore', 'true', { expires: 365 }) // Expires after 365 days
-
   }, [])
 
   return (
