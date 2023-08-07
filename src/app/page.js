@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <div className=' flex flex-row  gap-2 overflow-auto scrollbar-hide  '>
         {
-          placeTypes.map(place => <Button className=' bg-black  text-red-500 ' > {place} </Button>)
+          placeTypes.map(place => <Button key={place} className=' bg-black  text-red-500 ' > {place} </Button>)
         }
       </div>
       <div className=' h-screen '>
