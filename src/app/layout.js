@@ -40,17 +40,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-         {loading ?
+         {/* {loading ?
           <SplashScreen /> :
           <>
             {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
-              <>
+              <> */}
                 <Header />
                 {children}
                 <Footer />
-              </>}
+              {/* </>}
           </>
-        } 
+        }  */}
         {/* <OnboardingScreen /> */}
       </body>
     </html>
