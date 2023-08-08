@@ -11,7 +11,8 @@ import hostel2 from './hostel2.svg'
 import hostel3 from './hostel3.svg'
 import hostel4 from './hostel4.svg'
 import hostel5 from './hostel5.svg'
+import profile from './profile.svg'
 import mapIcon from './location-marker.svg'
 import bookmarkFilled from './bookmark-filled.svg'
 
-export { arrowLeft, chat, hostel1, hostel2, hostel3, hostel4, hostel5, home, bookmark, mapIcon, bookmarkFilled, screen, signature, screenn, logo }
+export { arrowLeft, chat, hostel1, hostel2, hostel3, profile, hostel4, hostel5, home, bookmark, mapIcon, bookmarkFilled, screen, signature, screenn, logo }
