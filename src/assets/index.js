@@ -1,7 +1,17 @@
 import logo from './logo.svg'
 import signature from './signature.svg'
 import screen from './screen.svg'
+import bookmark from './bookmark.svg'
+import chat from './chat.svg'
+import home from './home.svg'
 import screenn from './screenn.svg'
 import arrowLeft from './arrow-narrow-right.svg'
+import hostel1 from './hostel1.svg'
+import hostel2 from './hostel2.svg'
+import hostel3 from './hostel3.svg'
+import hostel4 from './hostel4.svg'
+import hostel5 from './hostel5.svg'
+import mapIcon from './location-marker.svg'
+import bookmarkFilled from './bookmark-filled.svg'
 
-export { arrowLeft, screen, signature, screenn, logo }
+export { arrowLeft, chat, hostel1, hostel2, hostel3, hostel4, hostel5, home, bookmark, mapIcon, bookmarkFilled, screen, signature, screenn, logo }
