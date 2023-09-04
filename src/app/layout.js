@@ -47,12 +47,11 @@ export default function RootLayout({ children }) {
           <SplashScreen /> :
           <>
             {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
-              <> */}
-                { isVisisble && <Header /> }
+              <> */
+                <Header />
                 {children}
-                { isVisisble && <Footer /> } 
-              {/* </>
-              }
+                <Footer />
+              {/* </>}
           </>
         }  */}
         {/* <OnboardingScreen /> */}
