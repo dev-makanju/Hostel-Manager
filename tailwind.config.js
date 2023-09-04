@@ -17,10 +17,14 @@ module.exports = {
         xl: '1440px',
       },
       colors: {
+        'white':'#fff',
         'site-color': '#0E0E0E',
         'variant1': '#C97B2C',
         'variant2': '#ff49db',
         'variant3': '#ff7849',
+      },
+      fontFamily: {
+        'gilroy': 'gilroy-bold'
       },
       backgroundImage: {
         'screen': "url('/screen.svg')",

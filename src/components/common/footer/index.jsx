@@ -1,8 +1,12 @@
 import React from 'react'
+import Image from 'next/image';
+import { logo } from '@/assets';
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div>
+      footer
+    </div>
   )
 }
 
