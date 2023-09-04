@@ -30,11 +30,14 @@ export default function RootLayout({ children }) {
     Cookies.get('visitedBefore') // Cookie check to see if the user has visited before
     //set it back to false
   )
+
+  const [ isVisisble , seIsVisisble ] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 3000)
-    Cookies.set('visitedBefore', 'true', { expires: 365 }) // Expires after 365 days
+    Cookies.set('visitedBefore', 'false', { expires: 365 }) // Expires after 365 days
   }, [])
 
   return (
@@ -44,7 +47,7 @@ export default function RootLayout({ children }) {
           <SplashScreen /> :
           <>
             {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
-              <> */}
+              <> */
                 <Header />
                 {children}
                 <Footer />
