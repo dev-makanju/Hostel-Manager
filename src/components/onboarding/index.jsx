@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Screen1 from './Screen1';
 import Screen2 from './Screen2';
-const OnboardingScreen = ({ setShowOnboardingScreen }) => {
-
+const OnboardingScreen = ({setShowOnboardingScreen}) => {
   // const [firstPage, setFirstPage] = useState(true)
   const [nextPage, setNextPage] = useState(true);
 
