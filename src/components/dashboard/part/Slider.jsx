@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'antd';
 import Image from 'next/image';
-import SliderLogo from '@/assets/images/slider.png'
+import SliderLogo from '../../../assets/images/slider.png'
 
 const contentStyle = {
   height:'300px',
