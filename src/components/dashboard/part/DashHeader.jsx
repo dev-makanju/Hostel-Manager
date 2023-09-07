@@ -5,12 +5,14 @@ import SearchInput from '../../common/utility/InputSearch';
 import house from '../../../assets/house.svg';
 import HostelTag from './HostelTag';
 import Overlay from '../../common/utility/Overlay';
+import {useRouter} from 'next/navigation'
 
 const hideScroll = {
    overflow: '-moz-scrollbars-none'
 }
 
 const DashHeader = () => {
+   const router = useRouter()
    const [isActive, setIsActive] = useState('');
    const [isSearching, setIsSearching ] = useState(false);
    const tags = ['All', 'single room' , 'Self con', 'Room and parlor' , 'Flat']
@@ -22,10 +24,13 @@ const DashHeader = () => {
       };
       setIsSearching(true);
    }
-
    const handleSelectTag = (val) => {
       setIsActive(val);
    }
+   const submitSearch = () => {
+      router.push('/dashboard/discover')
+   }
+
    return (
       <>
          {
@@ -43,7 +48,8 @@ const DashHeader = () => {
                         className="w-full outline-none p-3 bg-transparent"
                         aria-label='input search'
                         aria-describedby='kindly enter a text to search'
-                        role="textbox" 
+                        role="textbox"
+                        onKeyUp={submitSearch} 
                      />
                      <span onClick={ () => (setIsSearching(false))} className="p-3">X</span>
                   </div>

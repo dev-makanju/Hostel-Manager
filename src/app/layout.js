@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 import { Header, Footer, SplashScreen } from '@/components'
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from 'react'
-import OnboardingScreen from '@/components/onboarding/page'
+import OnboardingScreen from '@/components/onboarding'
 import Cookies from 'js-cookie'
 
 const inter = Inter({ subsets: ['latin'] })
