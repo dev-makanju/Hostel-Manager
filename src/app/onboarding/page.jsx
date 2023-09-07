@@ -4,7 +4,9 @@ import Index from '../../components/onboarding/index';
 
 const Onboarding = () => {
   return (
-    <><Index/></>
+    <>
+      <Index/>
+    </>
   )
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { arrowLeft, screen, house2 } from '@/assets'
 
-const Screen2 = ({ setShowOnboardingScreen , setCreateAcc }) => {
+const Screen2 = ({ setShowOnboardingScreen }) => {
   return (
     <div className="relative h-screen px-5 " >
       <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
@@ -31,7 +31,7 @@ const Screen2 = ({ setShowOnboardingScreen , setCreateAcc }) => {
                 <p className="text-[#525252] text-sm md:text-[12px]">Get help finding an hostel easily, within your budget and based on your choice</p>
               </div>
               <div className='p-2'>
-                <input onClick={() => setCreateAcc()} className='p-2' type="checkbox"/>
+                <input onChange={() => setShowOnboardingScreen(true)} className='p-2' type="checkbox"/>
               </div>
             </div>
             <div className='min-w-[300px] md:w-[400px] h-[110px] flex flex-row justify-between p-4 bg-[#FAFAFA] gap-[4px] rounded-xl'>
@@ -40,7 +40,7 @@ const Screen2 = ({ setShowOnboardingScreen , setCreateAcc }) => {
                 <p className="text-[#525252] text-sm md:text-[12px]">Find tenants for your properties easily</p>
               </div>
               <div className='p-2'>
-                <input onClick={() => setCreateAcc()} className='p-2' type="checkbox"/>
+                <input onChange={() => setShowOnboardingScreen(true)} className='p-2' type="checkbox"/>
               </div>
             </div>
           </div>

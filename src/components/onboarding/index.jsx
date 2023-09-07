@@ -9,7 +9,7 @@ const OnboardingScreen = ({setShowOnboardingScreen}) => {
     <div>
       {
         nextPage ?
-        <Screen1 setNextPage={setNextPage}/> : <Screen2 setShowOnboardingScreen={setShowOnboardingScreen} />
+        <Screen1 setNextPage={setNextPage}/> : <Screen2 setShowOnboardingScreen={setShowOnboardingScreen}/>
       }
     </div>
   )
