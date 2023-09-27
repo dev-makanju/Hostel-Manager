@@ -28,7 +28,7 @@ const DashHeader = () => {
       setIsActive(val);
    }
    const submitSearch = () => {
-      router.push('/dashboard/discover')
+      router.push('/dashboard/search');   
    }
 
    return (

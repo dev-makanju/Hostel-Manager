@@ -1,9 +1,52 @@
-import React from 'react'
-import Image from 'next/image'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
+import {useRouter} from 'next/navigation';
+import { registerService } from '@/service/eventService';
 
 
 const Register = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: '',
+    fullname: '',
+    password: '',
+    phone: '',
+  });
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  let emailFailed = false
+  let fullnameFailed = false
+  let passwordFailed = false
+  let phoneFailed = false
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    emailFailed = formData.email === '';
+    fullnameFailed = formData.fullname === '';
+    passwordFailed = formData.password === '';
+    phoneFailed = formData.phone === '';
+    if(emailFailed == false || passwordFailed == false || fullnameFailed == false || phoneFailed == false){
+      try{
+        const response = await registerService(formData);
+        if(response.status){
+          router.push('/auth/login');
+          return null
+        }
+      }catch(e){
+        throw(e);
+      }
+    }
+  }
+
   return (
     <div className="relative h-screen px-5 " >
       <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
@@ -26,37 +69,53 @@ const Register = () => {
           </div>
 
           <div className='md:w-full flex items-center gap-[1.5rem] flex-col mt-[3rem]'>    
-            <form className="w-full flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Full name ( surname first )</label>
                   <input 
-                  type="text"
-                  placeholder="Enter your full name" 
-                  className='border p-2 rounded-lg'/>
+                    type="text"
+                    placeholder="Enter your full name" 
+                    className={`${ fullnameFailed ? 'border border-[#e74e3c] p-2 rounded-lg' : 'border p-2 rounded-lg'}`}
+                    name="fullname"
+                    value={formData.fullname}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Email Address</label>
                   <input 
-                  type="email"
-                  placeholder="adelekebolaji0@|gmail.com" 
-                  className='border p-2 rounded-lg'/>
+                    type="email"
+                    placeholder="adelekebolaji0@|gmail.com" 
+                    className={`${ emailFailed ? 'border border-[#e74e3c] p-2 rounded-lg' : 'border p-2 rounded-lg'}`}
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Phone Number</label>
                   <input 
-                  type="phonenumber"
-                  placeholder="8023456789" 
-                  className='border p-2 rounded-lg'/>
+                    type="phonenumber"
+                    placeholder="8023456789" 
+                    className={`${ phoneFailed ? 'border border-[#e74e3c] p-2 rounded-lg' : 'border p-2 rounded-lg'}`}
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Password</label>
                   <input 
-                  type="password"
-                  placeholder="Enter your password" 
-                  className='border p-2 rounded-lg'/>
+                    type="password"
+                    placeholder="Enter your password" 
+                    className={`${ passwordFailed ? 'border border-[#e74e3c] p-2 rounded-lg' : 'border p-2 rounded-lg'}`}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="flex flex-col gap-2 mt-[5rem] mb-[3rem]">
-                  <button class="bg-[#0E0E0E] text-white rounded-lg p-3 w-full font-bold">Create Account</button>
+                  <button className="bg-[#0E0E0E] hover:bg-[#0e0e0eaa] text-white rounded-lg p-3 w-full font-bold">Create Account</button>
                   <p className='text-[#414141] text-sm mt-3 text-center'>
                       Already have an account?<Link href="/auth/login">
                       <span className="underline text-[#C97B2C]">Login</span>

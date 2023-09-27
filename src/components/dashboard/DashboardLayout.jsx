@@ -2,8 +2,9 @@
 
 import React, {useEffect, useState} from 'react'
 import { usePathname } from 'next/navigation';
-import DashFooter from './part/DashFooter'
-import DashHeader from './part/DashHeader'
+import DashFooter from './part/DashFooter';
+import DashHeader from './part/DashHeader';
+import PrivateRoute from '@/routes/PrivateRoute';
 
 
 const DashboardLayout = ({children}) => {
@@ -20,11 +21,13 @@ const DashboardLayout = ({children}) => {
    }, [showHeader, setShowHeader])
 
    return (
-    <div className="relative h-screen">
-      {showHeader && <DashHeader/>}
-         {children}
-      <DashFooter/>
-    </div>
+      <PrivateRoute>
+         <div className="relative h-screen">
+            {showHeader && <DashHeader/>}
+               {children}
+            <DashFooter/>
+         </div>
+      </PrivateRoute>
    )
 }
 
