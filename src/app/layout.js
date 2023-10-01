@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from 'react'
 import OnboardingScreen from '@/components/onboarding'
 import Cookies from 'js-cookie'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -49,6 +51,7 @@ export default function RootLayout({ children }) {
             {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
               <> */}
                 { isVisisble && <Header /> }
+                {<ToastContainer/>}
                 {children}
                 { isVisisble && <Footer /> } 
               {/* </>

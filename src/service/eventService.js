@@ -9,3 +9,7 @@ const apiClient =  axios.create({
 export const registerService = (data) => {
    return apiClient.post('v1/user' , data);
 }
+
+export const loginService = (data) => {
+   return apiClient.post(`v1/user/sign_in`, data);
+}

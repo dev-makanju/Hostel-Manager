@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/navigation';
 import { registerService } from '@/service/eventService';
-
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const router = useRouter();
@@ -39,10 +39,11 @@ const Register = () => {
         const response = await registerService(formData);
         if(response.status){
           router.push('/auth/login');
+          toast.success(response.data.message)
           return null
         }
       }catch(e){
-        throw(e);
+        toast.success(e.response.data.message);
       }
     }
   }

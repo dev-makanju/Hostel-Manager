@@ -1,9 +1,47 @@
-import React from 'react'
-import Image from 'next/image'
+'use client'
+import React,{ useState, useEffect } from 'react'
 import Link from 'next/link'
-
+import { useRouter } from 'next/navigation';
+import { loginService } from '@/service/eventService';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({email: '', password: ''});
+  const [emailFailed, setEmailFailed] = useState(false);
+  const [passwordFailed, setPasswordFailed] = useState(false);
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setEmailFailed(formData.email === '');
+    setPasswordFailed(formData.password === '');
+    console.log(formData, emailFailed, passwordFailed);
+    if(!isSubmiting){
+      if(!emailFailed && !passwordFailed){
+        setIsSubmiting(true);
+        try {
+          const response = await loginService(formData);
+          if(response.status){
+            router.push('/dashboard');
+            setIsSubmiting(false);
+            return null
+          }
+        }catch(e){
+          setIsSubmiting(false);
+          toast.error(e.response.data.message)
+        }
+      }
+    }
+  }
   return (
     <div className="relative h-screen px-5" >
       <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
@@ -26,24 +64,33 @@ const Login = () => {
           </div>
 
           <div className='md:w-full flex items-center gap-[1.5rem] flex-col mt-[3rem]'>    
-            <form className="w-full flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Email Address</label>
                   <input 
                   type="email"
                   placeholder="adelekebolaji0@|gmail.com" 
-                  className='border p-2 rounded-lg'/>
+                  name="email"
+                  className={`border p-2 rounded-lg ${ emailFailed ? ' border-[#e74e3c]' : ''}`}
+                  value={formData.email}
+                  onChange={handleChange}
+                  />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className='text-[#747474] text-sm'>Password</label>
                   <input 
                   type="password"
                   placeholder="Enter your password" 
-                  className='border p-2 rounded-lg'/>
+                  name="password"
+                  className={`border p-2 rounded-lg ${ passwordFailed ? 'border-[#e74e3c]' : ''}`}
+                  value={formData.password}
+                  onChange={handleChange}
+                  />
                 </div>
                 <Link className="flex justify-end mt-[-1rem]" href="/auth/forgot-password"><span className="underline text-[#000]">Forgot password?</span></Link>
                 <div className="flex flex-col gap-2 mt-[3rem] mb-[3rem]">
-                  <button class="bg-[#0E0E0E] text-white rounded-lg p-3 w-full font-bold">Login</button>
+                  <button disabled={isSubmiting} 
+                  className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${isSubmiting ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Login</button>
                   <p className='text-[#414141] text-sm text-center mt-3'>
                       You don’t have an account?<Link href="/auth/signup">
                       <span className="underline text-[#C97B2C]">Pls create one</span>
