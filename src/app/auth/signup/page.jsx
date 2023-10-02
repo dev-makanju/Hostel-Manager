@@ -14,7 +14,7 @@ const Register = () => {
     password: '',
     phone: '',
   });
-
+  const [isSubmiting, setIsSubmiting] = useState(false);
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormData({
@@ -34,23 +34,32 @@ const Register = () => {
     fullnameFailed = formData.fullname === '';
     passwordFailed = formData.password === '';
     phoneFailed = formData.phone === '';
-    if(emailFailed == false || passwordFailed == false || fullnameFailed == false || phoneFailed == false){
-      try{
-        const response = await registerService(formData);
-        if(response.status){
-          router.push('/auth/login');
-          toast.success(response.data.message)
-          return null
+    if(!isSubmiting){
+      if(emailFailed == false || passwordFailed == false || fullnameFailed == false || phoneFailed == false){
+        setIsSubmiting(true);
+        try{
+          const response = await registerService(formData);
+          if(response.status){
+            setIsSubmiting(false);
+            router.push('/auth/login');
+            toast.success(response.data.message)
+            localStorage.setItem('service-email', formData.email);
+            return null
+          }
+        }catch(e){
+          setIsSubmiting(false);
+          toast.error(e.response.data.message);
         }
-      }catch(e){
-        toast.success(e.response.data.message);
       }
     }
+  }
+  const handlePrev = () => {
+    router.back();
   }
 
   return (
     <div className="relative h-screen px-5 " >
-      <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
+      <div onClick={handlePrev} className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.76566 13.3661C7.45324 13.6785 6.94671 13.6785 6.63429 13.3661L1.83429 8.56607C1.52187 8.25366 1.52187 7.74712 1.83429 7.4347L6.63429 2.63471C6.94671 2.32229 7.45324 2.32229 7.76566 2.63471C8.07808 2.94712 8.07808 3.45366 7.76566 3.76608L4.33135 7.20039H13.6C14.0418 7.20039 14.4 7.55856 14.4 8.00039C14.4 8.44222 14.0418 8.80039 13.6 8.80039L4.33135 8.80039L7.76566 12.2347C8.07808 12.5471 8.07808 13.0537 7.76566 13.3661Z" fill="#111827"/>
         </svg>
@@ -116,7 +125,9 @@ const Register = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-2 mt-[5rem] mb-[3rem]">
-                  <button className="bg-[#0E0E0E] hover:bg-[#0e0e0eaa] text-white rounded-lg p-3 w-full font-bold">Create Account</button>
+                  <button 
+                      disabled={isSubmiting} 
+                      className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${isSubmiting ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Create Account</button>
                   <p className='text-[#414141] text-sm mt-3 text-center'>
                       Already have an account?<Link href="/auth/login">
                       <span className="underline text-[#C97B2C]">Login</span>

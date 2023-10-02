@@ -22,7 +22,7 @@ const DashboardLayout = ({children}) => {
 
    return (
       <PrivateRoute>
-         <div className="relative h-screen">
+         <div className="relative">
             {showHeader && <DashHeader/>}
                {children}
             <DashFooter/>

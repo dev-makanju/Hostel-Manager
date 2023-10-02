@@ -1,4 +1,9 @@
-@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@import "../fonts/font.module.css" ;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+   font-family: 'Proxima Nova Alt';
+   letter-spacing: .2px;
+}

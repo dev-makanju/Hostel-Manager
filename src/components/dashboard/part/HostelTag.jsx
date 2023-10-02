@@ -7,7 +7,7 @@ const HostelTag = ({name , active, onSelectTag}) => {
    
    return (
       <div
-      className={`whitespace-nowrap p-2 font-bold rounded-lg ${active === name ? 'bg-[#000] text-[#fff]' : `bg-[#D8D8D8] text-[#9E9E9E]`}`} 
+      className={`whitespace-nowrap p-2 font-bold rounded-lg text-xs ${active === name ? 'bg-[#000] text-[#fff]' : `border border-1 text-[#9E9E9E]`}`} 
       onClick={handleTag}>
          {name}
       </div>

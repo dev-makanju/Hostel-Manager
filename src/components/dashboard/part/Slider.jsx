@@ -4,7 +4,7 @@ import Image from 'next/image';
 import SliderLogo from '../../../assets/images/slider.png'
 
 const contentStyle = {
-  height:'300px',
+  height:'240px',
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
@@ -21,7 +21,7 @@ const Slider = () => (
         <div className="absolute bottom-[20px] p-4 w-full">
           <div className="backdrop-blur-sm bg-[#ffffff3f] p-2 rounded-lg flex items-center justify-between">
             <div>
-              <h2 className="text-[#fff] text-2xl font-bold">Wakajaye Villa</h2>
+              <h2 className="text-[#fff] text-base font-bold">Wakajaye Villa</h2>
               <span className="text-[#fff] flex items-center">
                 Rating: &nbsp; 
                 <span className="text-[yellow] font-bold">&#9733;</span>
@@ -33,8 +33,8 @@ const Slider = () => (
               </span> 
             </div>
             <div>
-              <h2 className="text-[#fff] text-2xl font-bold">₦100k</h2>
-              <span className="text-[#fff] text-sm">/year</span>
+              <h2 className="text-[#fff] text-sx font-bold">₦100k</h2>
+              <span className="text-[#fff] text-sx">/year</span>
             </div>
           </div>
         </div>
