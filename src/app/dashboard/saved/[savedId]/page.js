@@ -5,6 +5,7 @@ import Image from 'next/image';
 import HostelOne from '../../../../assets/images/hostelOne.png'
 import BathRoom from '../../../../assets/images/bathroom.png'
 import BedRoom from '../../../../assets/images/bedroom.png'
+import Profile from '../../../../assets/images/profile.png';
 import Closet from '../../../../assets/images/closet.png'
 import { useRouter } from 'next/navigation';
 
@@ -55,8 +56,8 @@ const SingleSavedProduct = () => {
           </div>
        </div>
        <div className="p-4">
-          <h1 className='bg-[#F4E1CD] text-xs p-2 rounded-lg text-[#C97B2C]'>Single room</h1>
-          <div className="rounded-lg p-1 flex items-center justify-between">
+          <span className='bg-[#F4E1CD] text-xs p-2 rounded-lg text-[#C97B2C]'>Single room</span>
+          <div className="rounded-lg p-1 flex items-center justify-between mt-6">
               <div className='w-[70%]'>
                     <h2 className="text-[#0E0E0E] text-lg font-bold">Ariremako Villa</h2>
                     <p className='flex items-center text-[#fff]'>
@@ -66,7 +67,13 @@ const SingleSavedProduct = () => {
                       </svg>
                       <span className='text-[#414141] text-sm'>Ipaja est., Mayfair</span>
                     </p>
-                    <span className="h-[16px] absolute bottom-0 right-0 rounded-sm text-[yellow] text-[15px]">&#9733;</span>
+                    <div className='flex items-center gap-1'>
+                      <div className="h-[16px] text-[yellow] text-[15px]">
+                        &#9733;&#9733;&#9733;&#9733;&#9733;
+                      </div>
+                      <span className='p-1 rounded-lg bg-[#F5F5F5]'>5.0</span>
+                      <span className='text-[#C97B2C] underline'>(34Review)</span>
+                    </div> 
               </div>
               <div>
                 <div className='flex flex-col'>    
@@ -74,6 +81,67 @@ const SingleSavedProduct = () => {
                   <span className="text-[#414141] text-sm">year</span>
                 </div>
               </div>
+          </div>
+          <div className="bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-between mt-6">
+              <div className='w-[70%] flex'>
+                    <Image src={Profile} alt="slider main" className='border-1 rounded-full'/>
+                    <div className='ml-2'>
+                      <h2 className="text-[#0E0E0E] text-lg font-bold">Ariremako Villa</h2>
+                      <p className='flex items-center text-[#fff]'>
+                        <svg className='mr-1' width="20" height="20" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.51777 5.45527C4.22508 5.74796 3.61299 6.36005 3.19181 6.78122C2.94773 7.0253 2.5524 7.02543 2.30832 6.78136C1.89448 6.36752 1.29425 5.76728 0.982233 5.45527C0.00592233 4.47896 0.00592233 2.89604 0.982233 1.91973C1.95854 0.943422 3.54146 0.943422 4.51777 1.91973C5.49408 2.89604 5.49408 4.47896 4.51777 5.45527Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.6875 3.6875C3.6875 4.20527 3.26777 4.625 2.75 4.625C2.23223 4.625 1.8125 4.20527 1.8125 3.6875C1.8125 3.16973 2.23223 2.75 2.75 2.75C3.26777 2.75 3.6875 3.16973 3.6875 3.6875Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span className='text-[#414141] text-sm'>Ipaja est., Mayfair</span>
+                      </p>
+                    </div>
+              </div>
+              <div className='flex gap-2 items-center'>
+                <span className='p-2 bg-[#EEEEEE] rounded-full'>
+                  <svg width="18" height="16" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.05523 4.31901H4.06155M6.58301 4.31901H6.58933M9.11079 4.31901H9.1171M4.68717 8.11068H2.1594C1.46137 8.11068 0.895508 7.54482 0.895508 6.84679V1.79123C0.895508 1.09321 1.46137 0.527344 2.1594 0.527344H11.0066C11.7046 0.527344 12.2705 1.09321 12.2705 1.79123V6.84679C12.2705 7.54482 11.7046 8.11068 11.0066 8.11068H7.8469L4.68717 11.2704V8.11068Z" stroke="#C97B2C" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span className='p-2 bg-[#EEEEEE] rounded-full'>
+                 <svg width="18" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5625 3.57248C2.5625 2.87446 3.12836 2.30859 3.82639 2.30859H5.89869C6.17069 2.30859 6.41219 2.48265 6.4982 2.7407L7.44474 5.5803C7.54419 5.87865 7.40912 6.20473 7.12784 6.34537L5.70137 7.0586C6.39793 8.60353 7.64256 9.84817 9.18749 10.5447L9.90072 9.11826C10.0414 8.83697 10.3674 8.70191 10.6658 8.80136L13.5054 9.74789C13.7634 9.83391 13.9375 10.0754 13.9375 10.3474V12.4197C13.9375 13.1177 13.3716 13.6836 12.6736 13.6836H12.0417C6.80647 13.6836 2.5625 9.43963 2.5625 4.20443V3.57248Z" stroke="#00C247" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+          </div>
+          <div className="p-1 mt-4">
+              <h2 className='text-[#0E0E0E] text-base font-bold'>Description</h2>
+              <p className='text-[#747474] text-sm'>
+              Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis <span className='text-[#C97B2C]'>...Read more</span> 
+              </p>
+          </div>
+
+          <div className="p-1 mt-4">
+              <h2 className='text-[#0E0E0E] text-base font-bold pb-4'>Facilities</h2>
+              <span className='p-2 font-bold rounded-lg border border-[#747474] text-[#747474]'>Wardrobe</span>
+          </div>
+
+          <div className="p-1 mt-4">
+              <h2 className='text-[#0E0E0E] text-base font-bold pb-4'>Location</h2>
+              <div className='bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-between'>
+                <span>
+
+                </span>
+                <p>5.6km from O.A.U</p>
+              </div>
+              
+          </div>
+
+          <div className="p-1 mt-4 flex gap-2 ">
+            <button className='p-3 border flex-1 font-bold rounded-lg text-[#0E0E0E]'>Book A Tour</button>
+            <button className=' p-2 border-1 flex-1 font-bold rounded-lg bg-[#0E0E0E] text-[#fff]'>Pay Rent</button>
+          </div>
+
+          <div className="p-1 mt-4">
+              <h2 className='text-[#0E0E0E] text-base font-bold'>Location</h2>
+              <p className='text-[#747474] text-sm'>
+              Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis <span className='text-[#C97B2C]'>...Read more</span> 
+              </p>
           </div>
 
        </div>
