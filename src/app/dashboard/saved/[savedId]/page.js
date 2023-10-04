@@ -54,9 +54,28 @@ const SingleSavedProduct = () => {
             </div>
           </div>
        </div>
-       <div className="">
-         
-         
+       <div className="p-4">
+          <h1 className='bg-[#F4E1CD] text-xs p-2 rounded-lg text-[#C97B2C]'>Single room</h1>
+          <div className="rounded-lg p-1 flex items-center justify-between">
+              <div className='w-[70%]'>
+                    <h2 className="text-[#0E0E0E] text-lg font-bold">Ariremako Villa</h2>
+                    <p className='flex items-center text-[#fff]'>
+                      <svg className='mr-1' width="20" height="20" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.51777 5.45527C4.22508 5.74796 3.61299 6.36005 3.19181 6.78122C2.94773 7.0253 2.5524 7.02543 2.30832 6.78136C1.89448 6.36752 1.29425 5.76728 0.982233 5.45527C0.00592233 4.47896 0.00592233 2.89604 0.982233 1.91973C1.95854 0.943422 3.54146 0.943422 4.51777 1.91973C5.49408 2.89604 5.49408 4.47896 4.51777 5.45527Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M3.6875 3.6875C3.6875 4.20527 3.26777 4.625 2.75 4.625C2.23223 4.625 1.8125 4.20527 1.8125 3.6875C1.8125 3.16973 2.23223 2.75 2.75 2.75C3.26777 2.75 3.6875 3.16973 3.6875 3.6875Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span className='text-[#414141] text-sm'>Ipaja est., Mayfair</span>
+                    </p>
+                    <span className="h-[16px] absolute bottom-0 right-0 rounded-sm text-[yellow] text-[15px]">&#9733;</span>
+              </div>
+              <div>
+                <div className='flex flex-col'>    
+                  <h2 className="text-[#0E0E0E] text-sm font-bold">₦100k</h2>
+                  <span className="text-[#414141] text-sm">year</span>
+                </div>
+              </div>
+          </div>
+
        </div>
        <div style={parentCard} className='mt-5 p-4'>
         <HostelCards/>
