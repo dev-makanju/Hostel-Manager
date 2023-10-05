@@ -33,7 +33,7 @@ const Slider = () => (
               </span> 
             </div>
             <div>
-              <h2 className="text-[#fff] text-sx font-bold">₦100k</h2>
+              <h2 className="text-[#fff] text-sx font-bold">₦500k</h2>
               <span className="text-[#fff] text-sx">/year</span>
             </div>
           </div>
