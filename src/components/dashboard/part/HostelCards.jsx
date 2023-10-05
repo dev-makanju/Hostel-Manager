@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
-import HostelOne from '../../../assets/images/hostelOne.png'
+import HostelOne from '../../../assets/images/hostelOne.png';
+import Link from 'next/link';
 
 const HostelCards = () => {
    return (
@@ -10,6 +11,7 @@ const HostelCards = () => {
          </div>
 
          <div className="absolute bottom-[2px] p-2 w-full">
+         <Link href="/dashboard/property/1">     
             <div className="backdrop-blur-sm bg-[#45424257] rounded-lg p-1 flex items-center justify-between">
                <div className='w-[70%]'>
                      <h2 className="text-[#fff] text-sm font-bold truncate">Ariremako Villa</h2>
@@ -30,6 +32,7 @@ const HostelCards = () => {
                   className="h-[14px] absolute bottom-0 right-0 backdrop-blur-sm rounded-sm bg-[#988f8f93] text-[yellow] text-[8px]">&#9733;<span className='text-[#fff] text-[10px] p-[2px]'>5.0</span></span>
                </div>
             </div>
+         </Link>
          </div>
          <div className='w-full absolute top-0 right-0 flex justify-between p-2'>
             <h1 className='bg-[#C97B2C] text-xs p-2 rounded-lg text-[#fff]'>Single room</h1>

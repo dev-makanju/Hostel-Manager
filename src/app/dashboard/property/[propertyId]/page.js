@@ -7,6 +7,7 @@ import BathRoom from '../../../../assets/images/bathroom.png'
 import BedRoom from '../../../../assets/images/bedroom.png'
 import Profile from '../../../../assets/images/profile.png';
 import Closet from '../../../../assets/images/closet.png'
+import Map from '../../../../assets/images/map.png';
 import { useRouter } from 'next/navigation';
 
 const SingleSavedProduct = () => {
@@ -123,11 +124,14 @@ const SingleSavedProduct = () => {
 
           <div className="p-1 mt-4">
               <h2 className='text-[#0E0E0E] text-base font-bold pb-4'>Location</h2>
-              <div className='bg-[#F5F5F5] rounded-lg p-4 flex items-center justify-between'>
+              <div className='bg-[#F5F5F5] rounded-lg p-4 flex gap-4'>
                 <span>
-
+                  <svg className='mr-1' width="20" height="20" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.51777 5.45527C4.22508 5.74796 3.61299 6.36005 3.19181 6.78122C2.94773 7.0253 2.5524 7.02543 2.30832 6.78136C1.89448 6.36752 1.29425 5.76728 0.982233 5.45527C0.00592233 4.47896 0.00592233 2.89604 0.982233 1.91973C1.95854 0.943422 3.54146 0.943422 4.51777 1.91973C5.49408 2.89604 5.49408 4.47896 4.51777 5.45527Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M3.6875 3.6875C3.6875 4.20527 3.26777 4.625 2.75 4.625C2.23223 4.625 1.8125 4.20527 1.8125 3.6875C1.8125 3.16973 2.23223 2.75 2.75 2.75C3.26777 2.75 3.6875 3.16973 3.6875 3.6875Z" stroke="#414141" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </span>
-                <p>5.6km from O.A.U</p>
+                <p><span className='font-bold text-[#0E0E0E]'>5.6km</span> from O.A.U</p>
               </div>
               
           </div>
@@ -137,11 +141,10 @@ const SingleSavedProduct = () => {
             <button className=' p-2 border-1 flex-1 font-bold rounded-lg bg-[#0E0E0E] text-[#fff]'>Pay Rent</button>
           </div>
 
-          <div className="p-1 mt-4">
-              <h2 className='text-[#0E0E0E] text-base font-bold'>Location</h2>
-              <p className='text-[#747474] text-sm'>
-              Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis <span className='text-[#C97B2C]'>...Read more</span> 
-              </p>
+          <div className="p-1 mt-4 relative">
+            <Image src={Map} alt="google map"/>
+            <div 
+            className='p-4 backdrop-blur-sm bg-[#45424257] absolute text-[#525252] bottom-0 left-0 w-full text-center font-bold'>View direction on google map</div>
           </div>
 
        </div>
