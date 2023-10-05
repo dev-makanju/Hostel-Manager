@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
    font-family: 'Proxima Nova Alt';
    letter-spacing: .2px;
