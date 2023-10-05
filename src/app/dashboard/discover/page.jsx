@@ -1,11 +1,12 @@
 'use client'
+
 import {useState} from 'react'
 import { useRouter } from 'next/navigation';
 import HostelCards from '../../../components/dashboard/part/HostelCards';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { Checkbox, Slider, Switch, Button } from 'antd';
 
-const page = () => {
+const Discover = () => {
    const [isFilter, setIsFilter] = useState(false);
    const [ searchFounded , setSearchFounded] = useState(true);
    const router = useRouter();
@@ -139,4 +140,4 @@ const page = () => {
    )
 }
 
-export default page
+export default Discover

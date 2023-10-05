@@ -5,7 +5,7 @@ import HostelCards from '../../../components/dashboard/part/HostelCards';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { Checkbox, Slider, Switch, Button } from 'antd';
 
-const page = () => {
+const Search = () => {
    const tags = ['2year', '120$ - 150$' , 'Self con', 'Room and parlor' , 'Flat']
    const [isFilter, setIsFilter] = useState(false)
    const [ searchFounded , setSearchFounded] = useState(true)
@@ -181,5 +181,5 @@ const page = () => {
    )
 }
 
-export default page;
+export default Search;
 

@@ -1,11 +1,12 @@
 'use client'
+
 import { useState } from 'react'
 import Slider from '@/components/dashboard/part/Slider';
 import HostelNearYou from '@/components/dashboard/part/HostelNearYou';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import Overlay from '@/components/common/utility/Overlay';
 
-const page = () => {
+const Dashboard = () => {
   const [ isVisible, setIsVisible ] = useState(true);
 
 
@@ -44,4 +45,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Dashboard
