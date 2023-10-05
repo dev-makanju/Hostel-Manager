@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { useRouter } from 'next/navigation';
 import HostelCards from '../../../components/dashboard/part/HostelCards';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
@@ -12,13 +12,11 @@ const page = () => {
    const handlePrev = () => {
       router.back();
    }
-
    const parentCard = {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(150px , 1fr))',
       gridGap: '1em',
    }
-
    const onChange = (checked) => {
       console.log(`switch to ${checked}`);
    };

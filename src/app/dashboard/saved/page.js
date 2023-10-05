@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import HostelCards from '@/components/dashboard/part/HostelCards';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';

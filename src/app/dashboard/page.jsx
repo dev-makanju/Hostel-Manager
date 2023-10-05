@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Slider from '@/components/dashboard/part/Slider';
 import HostelNearYou from '@/components/dashboard/part/HostelNearYou';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
