@@ -5,7 +5,6 @@ import { otpService , resendOtpService } from '@/service/eventService';
 import { toast } from 'react-toastify';
 import OtpInput from 'react-otp-input';
 
-
 const Otp = () => {
   const router = useRouter();
   const [otp, setOtp] = useState('');
@@ -48,7 +47,6 @@ const Otp = () => {
      try {
       const response = await resendOtpService(input);
       if(response.status === 200){
-         router.push('/dashboard');
          toast.success(response.data.message);
          return null
       }

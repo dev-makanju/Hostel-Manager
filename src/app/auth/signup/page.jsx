@@ -14,6 +14,11 @@ const Register = () => {
     password: '',
     phone: '',
   });
+  const [emailFailed, setEmailFailed] = useState(false);
+  const [fullnameFailed, setFullnameFailed] = useState(false);
+  const [passwordFailed, setPasswordFailed] = useState(false);
+  const [phoneFailed, setPhoneFailed] = useState(false);
+
   const [isSubmiting, setIsSubmiting] = useState(false);
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -23,22 +28,28 @@ const Register = () => {
     })
   }
 
-  let emailFailed = false
-  let fullnameFailed = false
-  let passwordFailed = false
-  let phoneFailed = false
+  const _emailFailed = formData.email === ''
+  const _fullnameFailed = formData.fullname === ''
+  const _passwordFailed = formData.password === ''
+  const _phoneFailed = formData.phone === ''
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    emailFailed = formData.email === '';
-    fullnameFailed = formData.fullname === '';
-    passwordFailed = formData.password === '';
-    phoneFailed = formData.phone === '';
+    setEmailFailed(_emailFailed);
+    setFullnameFailed(_fullnameFailed)
+    setPasswordFailed(_passwordFailed)
+    setPhoneFailed(_phoneFailed)
+
     if(!isSubmiting){
-      if(emailFailed == false || passwordFailed == false || fullnameFailed == false || phoneFailed == false){
+      if(!_emailFailed && !_passwordFailed && !_fullnameFailed && !_phoneFailed){
+        if(formData.password.length <= 5){
+          toast.error('Password length should be min 6');
+          return;
+        }
         setIsSubmiting(true);
         try{
           const response = await registerService(formData);
+          console.log(response);
           if(response.status){
             setIsSubmiting(false);
             router.push('/auth/login');
@@ -47,6 +58,7 @@ const Register = () => {
             return null
           }
         }catch(e){
+          console.log(e);
           setIsSubmiting(false);
           toast.error(e.response.data.message);
         }

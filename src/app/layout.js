@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import OnboardingScreen from '@/components/onboarding'
 import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from '@/context/AuthContext'
 import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -43,23 +44,25 @@ export default function RootLayout({ children }) {
   }, [])
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
-         {/* {loading ?
-          <SplashScreen /> :
-          <>
-            {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
-              <> */}
-                { isVisisble && <Header /> }
-                {<ToastContainer/>}
-                {children}
-                { isVisisble && <Footer /> } 
-              {/* </>
-              }
-          </>
-        }  */}
-        {/* <OnboardingScreen /> */}
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          {/* {loading ?
+            <SplashScreen /> :
+            <>
+              {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
+                <> */}
+                  { isVisisble && <Header /> }
+                  {<ToastContainer/>}
+                  {children}
+                  { isVisisble && <Footer /> } 
+                {/* </>
+                }
+            </>
+          }  */}
+          {/* <OnboardingScreen /> */}
+        </body>
+      </html>
+    </AuthProvider>
   )
 }

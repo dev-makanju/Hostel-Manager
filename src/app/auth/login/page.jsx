@@ -1,16 +1,18 @@
 'use client'
-import React,{ useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useAuth } from '../../../context/AuthContext'
 import { useRouter } from 'next/navigation';
-import { loginService } from '@/service/eventService';
 import { toast } from 'react-toastify';
+
 
 const Login = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({email: '', password: ''});
   const [emailFailed, setEmailFailed] = useState(false);
-  const [passwordFailed, setPasswordFailed] = useState(false);
+  const [passwordFailed, setPasswordFailed] = useState(false);  
   const [isSubmiting, setIsSubmiting] = useState(false);
+  const auth = useAuth();
 
   useEffect(() => {
     const getMail = localStorage.getItem('service-email');
@@ -26,33 +28,28 @@ const Login = () => {
     const {name, value} = e.target
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  async (e) => {
     e.preventDefault();
-    setEmailFailed(formData.email === '');
-    setPasswordFailed(formData.password === '');
-    console.log(formData, emailFailed, passwordFailed);
-    if(!isSubmiting){
-      if(!emailFailed && !passwordFailed){
+    const _emailFailed = formData.email === ''
+    const _passFailed = formData.password === ''
+    setPasswordFailed(_passFailed)
+    setEmailFailed(_emailFailed)
+    if(!_emailFailed && !_passFailed){
+      if(!isSubmiting){
         setIsSubmiting(true);
-        try {
-          const response = await loginService(formData);
-          if(response.status){
-            router.push('/dashboard');
-            setIsSubmiting(false);
-            return null
-          }
-        }catch(e){
+        const res = await auth.login(formData) 
+        if(res.status === 200){
           setIsSubmiting(false);
-          toast.error(e.response.data.message)
-          if(e.response.status === 400){
-            router.push('/auth/otp');
-            return;
-          }
+          router.push('/dashboard');
+          return;
         }
+        setIsSubmiting(false);
+        toast.error(res.data.message);
+        if(res.status === 400) router.push('/auth/otp');  
       }
     }
   }
@@ -107,7 +104,7 @@ const Login = () => {
                 <Link className="flex justify-end mt-[-1rem]" href="/auth/forgot-password"><span className="underline text-[#000]">Forgot password?</span></Link>
                 <div className="flex flex-col gap-2 mt-[3rem] mb-[3rem]">
                   <button disabled={isSubmiting} 
-                  className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${isSubmiting ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Login</button>
+                  className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${ isSubmiting ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Login</button>
                   <p className='text-[#414141] text-sm text-center mt-3'>
                       You don’t have an account?<Link href="/auth/signup">
                       <span className="underline text-[#C97B2C]">Pls create one</span>

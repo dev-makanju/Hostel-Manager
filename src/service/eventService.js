@@ -1,9 +1,15 @@
 import axios from 'axios';
 
 const BASE_URL  = 'https://hostel-manager.onrender.com/v1/';
+const token = sessionStorage.getItem('token');
 
 const apiClient =  axios.create({
-   baseURL: BASE_URL
+   baseURL: BASE_URL,
+   headers: {
+      'Accept': 'application/json',
+      "Content-Type": 'application/json',
+      "Authorization": `Bearer ${token}`
+   }
 })
 
 export const registerService = (data) => {
@@ -16,5 +22,11 @@ export const otpService = (data) => {
    return apiClient.patch('user/verify-account', data)
 }
 export const resendOtpService = (data) => {
-   return apiClient.get('user/resend-otp', data)
+   return apiClient.get(`user/resend-otp?email=${data.email}`)
 }
+
+export const userService = () => {
+   return apiClient.get(`user/me`);
+}
+
+export default apiClient;

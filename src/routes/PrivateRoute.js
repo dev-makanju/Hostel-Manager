@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation'
 const PrivateRoute = ({children}) => {
    const  user  = useAuth();
    const router = useRouter();
-   
+   console.log(user);
    // redirect if not loggedin
-   if(!user){
+   if(!user.user){
       router.push('/auth/login');
       return null;
    }
