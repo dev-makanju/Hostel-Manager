@@ -64,7 +64,7 @@ const Login = () => {
         </svg>
       </div>
 
-      <div className='md:w-[70%] h-full m-auto z-10 pt-16 pt-16 flex items-center flex-col gap-16'>
+      <div className='md:w-[70%] h-full m-auto z-10 pt-16  gap-16'>
         <div className="md:w-[450px]">
           <div className='md:w-full flex items-center flex-col'>    
             <span>
@@ -73,8 +73,8 @@ const Login = () => {
               <path d="M36.6667 35.4146H35V16.6313C35 15.5979 34.5334 14.6313 33.7167 13.9979L22.05 4.93125C20.85 3.98125 19.15 3.98125 17.95 4.93125L6.28337 13.9979C5.46671 14.6313 5.00004 15.5979 5.00004 16.6146L4.91671 35.4146H3.33337C3.00185 35.4146 2.68391 35.5463 2.44949 35.7807C2.21507 36.0151 2.08337 36.3331 2.08337 36.6646C2.08337 36.9961 2.21507 37.314 2.44949 37.5485C2.68391 37.7829 3.00185 37.9146 3.33337 37.9146H36.6667C36.9982 37.9146 37.3162 37.7829 37.5506 37.5485C37.785 37.314 37.9167 36.9961 37.9167 36.6646C37.9167 36.3331 37.785 36.0151 37.5506 35.7807C37.3162 35.5463 36.9982 35.4146 36.6667 35.4146ZM17.5 11.2479H22.5C23.1834 11.2479 23.75 11.8146 23.75 12.4979C23.75 13.1812 23.1834 13.7479 22.5 13.7479H17.5C16.8167 13.7479 16.25 13.1812 16.25 12.4979C16.25 11.8146 16.8167 11.2479 17.5 11.2479ZM28.3334 35.4146H11.6667V20.8313C11.6667 19.4479 12.7834 18.3313 14.1667 18.3313H25.8334C27.2167 18.3313 28.3334 19.4479 28.3334 20.8313V35.4146Z" fill="#0E0E0E"/>
               </svg>
             </span>
-            <h1 className='leading-10 text-2xl md:text-3xl mt-2 md:leading-normal text-center font-bold'>Welcome back!</h1>
-            <p className="text-center mt-2">Continue enjoying seamless rental experience</p>
+            <h1 className='leading-10 text-lg text-center font-bold'>Welcome back!</h1>
+            <p className="text-center text-sm mt-2">Continue enjoying seamless rental experience</p>
           </div>
 
           <div className='md:w-full flex items-center gap-[1.5rem] flex-col mt-[3rem]'>    

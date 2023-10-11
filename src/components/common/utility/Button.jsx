@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Button = ({onButtonClicked}) => {
-  
+const Button = ({onButtonClicked, submit}) => {
+   const isSubmiting = false;
    const submitUpdate = (e) => {
       e.preventDefault();
       onButtonClicked();
@@ -10,8 +10,9 @@ const Button = ({onButtonClicked}) => {
    return (
      <button 
       type="button"
-      onClick={submitUpdate} 
-      className="bg-[#0E0E0E] text-white rounded-lg p-3 w-full font-bold">Submit</button>
+      onClick={submitUpdate}
+      disabled={submit} 
+      className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${submit ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Submit</button>
    )
 }
 

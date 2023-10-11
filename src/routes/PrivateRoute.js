@@ -8,7 +8,8 @@ const PrivateRoute = ({children}) => {
    // redirect if not loggedin
    if(!user.user){
       router.push('/auth/login');
-      return null;
+   }else{
+      router.push('/dashboard');
    }
 
    return children;

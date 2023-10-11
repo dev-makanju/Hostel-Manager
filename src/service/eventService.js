@@ -24,7 +24,12 @@ export const otpService = (data) => {
 export const resendOtpService = (data) => {
    return apiClient.get(`user/resend-otp?email=${data.email}`)
 }
-
+export const verifyPasswordOtpService = (data) => {
+   return apiClient.patch('user/verify-otp', data)
+}
+export const forgotService = (data) => {
+   return apiClient.get(`user/forgot-password?email=${data.email}`)
+}
 export const userService = () => {
    return apiClient.get(`user/me`);
 }

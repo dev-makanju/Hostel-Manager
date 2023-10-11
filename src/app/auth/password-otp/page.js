@@ -1,7 +1,8 @@
 'use client'
+
 import React,{ useState} from 'react'
 import { useRouter } from 'next/navigation';
-import { otpService , resendOtpService } from '@/service/eventService';
+import { verifyPasswordOtpService , resendOtpService } from '@/service/eventService';
 import { toast } from 'react-toastify';
 import OtpInput from 'react-otp-input';
 
@@ -21,9 +22,9 @@ const Otp = () => {
          }
          setIsSubmiting(true);
          try {
-            const response = await otpService(input);
+            const response = await verifyPasswordOtpService(input);
             if(response.status){
-               router.push('/dashboard');
+               router.push('/auth/reset-password');
                setIsSubmiting(false);
                toast.success(response.data.message);
                return null

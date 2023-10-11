@@ -6,3 +6,13 @@ body {
    font-family: 'Proxima Nova Alt';
    letter-spacing: .2px;
 }
+
+.fade-in {
+   transition: opacity 1.5s ease;
+}
+ 
+.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+ 
