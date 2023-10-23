@@ -4,12 +4,11 @@ import './global.css'
 import { Inter } from 'next/font/google'
 import { Header, Footer, SplashScreen } from '@/components'
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from 'react'
+im  port { useEffect, useState, Suspense } from 'react'
 import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from '@/context/AuthContext'
 import 'react-toastify/dist/ReactToastify.css';
-
 const inter = Inter({ subsets: ['latin'] })
 
 const metadata = {
@@ -26,18 +25,13 @@ export const siteMetadata = metadata;
 export default function RootLayout({ children }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
-  // const showOnboard = Cookies.get('visitedBefore') // Cookie check to see if the user has visited before
   const [loading, setLoading] = useState(isHome)
-  // const [showOnboardingScreen, setShowOnboardingScreen] = useState(false)
-  // const [showOnboardingScreen, setShowOnboardingScreen] = useState(showOnboard)
-
-  // const [ isVisisble , seIsVisisble ] = useState(false);
-
+  
   const showOnboardScreen = () => {
     setShowOnboardingScreen(false);
   }
 
-  useEffect(() => {
+  useEffect(() => {    
     setTimeout(() => {
       setLoading(false)
     }, 3000)

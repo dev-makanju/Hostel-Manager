@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useRouter} from 'next/navigation';
 import { registerService } from '@/service/eventService';
 import { toast } from 'react-toastify';
+import PrivateRoute from '@/routes/PrivateRoute';
 
 const Register = () => {
   const router = useRouter();
@@ -70,13 +71,13 @@ const Register = () => {
   }
 
   return (
-    <div className="relative h-screen px-5 " >
+    <PrivateRoute>
+      <div className="relative h-screen px-5 " >
       <div onClick={handlePrev} className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.76566 13.3661C7.45324 13.6785 6.94671 13.6785 6.63429 13.3661L1.83429 8.56607C1.52187 8.25366 1.52187 7.74712 1.83429 7.4347L6.63429 2.63471C6.94671 2.32229 7.45324 2.32229 7.76566 2.63471C8.07808 2.94712 8.07808 3.45366 7.76566 3.76608L4.33135 7.20039H13.6C14.0418 7.20039 14.4 7.55856 14.4 8.00039C14.4 8.44222 14.0418 8.80039 13.6 8.80039L4.33135 8.80039L7.76566 12.2347C8.07808 12.5471 8.07808 13.0537 7.76566 13.3661Z" fill="#111827"/>
         </svg>
       </div>
-
       <div className='md:w-[70%] h-full m-auto z-10 pt-16 flex items-center flex-col gap-16'>
         <div className="md:w-[450px]">
           <div className='md:w-full flex items-center flex-col'>    
@@ -151,6 +152,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+    </PrivateRoute>
   )
 }
 

@@ -1,14 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Slider from '@/components/dashboard/part/Slider';
 import HostelNearYou from '@/components/dashboard/part/HostelNearYou';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import Overlay from '@/components/common/utility/Overlay';
+import { useAuth } from '@/context/AuthContext';
 
 const Dashboard = () => {
-  const [ isVisible, setIsVisible ] = useState(true);
+  const {hostel, fetchAllHostel} = useAuth();
+  const [ isVisible, setIsVisible] = useState(true);
+  const [hostelData, setHostelData] = useState({
+      total: 0,
+      loading: false,
+      hostel: [],
+  })
+  
 
+  useEffect( () => {
+    async function fetchHostel(){
+      if(!hostel.hostel){
+        const res = await fetchAllHostel();
+        if(res.status === 200){
+         console.log(hostelData)
+         return;    
+        }
+        toast.error("Oops! Somthing Went Wrong")
+      }
+    }
+    fetchHostel();
+  },[])
 
   return (
     <div id="portal-root" className="relative h-screen">
@@ -39,7 +60,7 @@ const Dashboard = () => {
       }
       <DashboardLayout>
         <Slider/>
-        <HostelNearYou/>
+        <HostelNearYou hostels={hostelData}/>
       </DashboardLayout>
     </div>
   )

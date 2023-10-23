@@ -5,6 +5,7 @@ import Button from '@/components/common/utility/Button';
 import Modal from '@/components/auth/forgotpass/modal';
 import { toast } from 'react-toastify';
 import { forgotService } from '@/service/eventService';
+import PrivateRoute from '@/routes/PrivateRoute';
 
 
 const ForgotPassword = () => {
@@ -75,7 +76,8 @@ const ForgotPassword = () => {
 
 
   return (
-    <div className="relative h-screen px-5 " >
+    <PrivateRoute>
+      <div className="relative h-screen px-5 " >
       {isSelectedOption && <Modal/>} 
       <div className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +149,8 @@ const ForgotPassword = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </PrivateRoute>
   )
 }
 

@@ -2,13 +2,44 @@
 import React , {useState} from 'react'
 import ConfirmMadal from '@/components/auth/forgotpass/ConfirmMadal'
 import {useRouter} from 'next/navigation';
+import { resetPasswordService } from '@/service/eventService';
+import { toast } from 'react-toastify';
+import PrivateRoute from '@/routes/PrivateRoute';
 
 const ForgotPassword = () => {
   const router = useRouter();
   const [ isUpdated , setIsUpdated ] = useState(false);
-  const handleForm = (e) => {
+  const [password, setPassword] = useState('');
+  const [passwordFailed , setPasswordFailed] = useState(false); 
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
+  const handleChange = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const handleForm =  async (e) => {
     e.preventDefault();
-    setIsUpdated(true);
+    const getMail = localStorage.getItem('service-email');
+    const _passFailed = password === '';
+    setPasswordFailed(_passFailed);
+    if(!_passFailed){
+      if(!isSubmiting){
+        const formData = {
+          email: getMail,
+          new_password: password
+        }
+        setIsSubmiting(true);
+        const res = await resetPasswordService(formData) 
+        if(res.status === 200) {
+          setIsSubmiting(false);
+          toast.success(res.data.message);  
+          router.push('/auth/login');
+          return;
+        }
+        setIsSubmiting(false);
+        toast.error(e.response.data.error.message);  
+      }
+    }
   }
 
   const handlePrev = () => {
@@ -16,7 +47,8 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="relative h-screen px-5" >
+    <PrivateRoute>
+       <div className="relative h-screen px-5" >
       { isUpdated && <ConfirmMadal className="absolute inset-0"/>} 
       <div onClick={handlePrev} className="bg-[#FAFAFA] rounded p-2 w-[36px] mt-2 pointer">
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,23 +74,25 @@ const ForgotPassword = () => {
                   <div className="flex flex-col gap-2">
                      <label className='text-[#747474] text-sm'>Password</label>
                      <input 
-                     type="password"
-                     placeholder="Enter your password" 
-                     className='border p-2 rounded-lg'/>
+                      type="password"
+                      onChange={handleChange}
+                      placeholder="Enter your password" 
+                      className={`border p-2 rounded-lg ${ passwordFailed ? 'border-[#e74e3c]' : ''}`}/>
                   </div>
                   <p className='text-[#414141] text-sm text-center mt-1'>
                      Password must be at least <span className="text-[#32936F]">8 Characters</span> and must contain at least a 
-                     <span className="text-[#32936F]">Capital Letter</span>, a <span className="text-[#000000]">Number</span> and a <span className="text-[#000000]">Specialr Character.</span> 
+                     <span className="text-[#32936F]">Capital Letter</span>, a <span className="text-[#000000]">Number</span> and a <span className="text-[#000000]">Special Character.</span> 
                   </p>
                 <div className="flex flex-col gap-2 mt-[3rem] mb-[3rem]">
-                  <button onClick={handleForm} 
-                  class="bg-[#0E0E0E] text-white rounded-lg p-3 w-full font-bold">Login</button>
+                  <button onClick={handleForm}
+                  className={`text-white rounded-lg p-3 w-full font-bold hover:bg-[#0e0e0eaa] ${ isSubmiting ? 'bg-[#0e0e0eaa] cursor-not-allowed' : 'bg-[#0E0E0E]'}`}>Reset Password</button>
                 </div>  
             </form>   
           </div>
         </div>
       </div>
     </div>
+    </PrivateRoute>
   )
 }
 
