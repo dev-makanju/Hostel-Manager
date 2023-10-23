@@ -4,7 +4,7 @@ import './global.css'
 import { Inter } from 'next/font/google'
 import { Header, Footer, SplashScreen } from '@/components'
 import { usePathname } from "next/navigation"
-im  port { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from '@/context/AuthContext'
