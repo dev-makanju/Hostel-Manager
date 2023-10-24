@@ -9,7 +9,7 @@ import Cookies from 'js-cookie'
 import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from '@/context/AuthContext'
 import 'react-toastify/dist/ReactToastify.css';
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 const metadata = {
   title: 'Create Next App',
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body>
           <div className='sm:hidden'>
             {loading ?
               <SplashScreen/> :

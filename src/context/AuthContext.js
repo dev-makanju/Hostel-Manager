@@ -20,14 +20,14 @@ export const AuthProvider = ({children}) => {
          if(token){
             apiClient.defaults.headers.Authorization = `Bearer ${token}`
             const user = await userService();
-            setIsLoading(true);
+            //setIsLoading(true);
             if (user.status === 200){
                setUser(user);
-               setIsLoading(false);
+               //setIsLoading(false);
             }else{   
                delete apiClient.defaults.headers.Authorization
                sessionStorage.removeItem('token');
-               setIsLoading(false);
+               //setIsLoading(false);
             };
          }
       }
