@@ -11,13 +11,14 @@ import PrivateRoute from '@/routes/PrivateRoute';
 const ForgotPassword = () => {
     const [isSelectedOption , SetIsSelectedOption] = useState(false);
     const [email, setEmail] = useState('');
-    const [emailFailed, setEmailFailed] = useState(false)
-    const [ isSubmiting , setIsSubmiting ] = useState(false)
-    const getMail = localStorage.getItem('service-email');
+    const [emailFailed, setEmailFailed] = useState(false);
+    const [ isSubmiting , setIsSubmiting ] = useState(false);
   
     useEffect( () => {
+      const getMail = localStorage.getItem('service-email');
+      
       if(getMail){
-        setEmail(getMail)
+        setEmail(getMail);
       }
     }, [])
 
@@ -42,7 +43,6 @@ const ForgotPassword = () => {
     }
     
     const handleButtonEvent = async () => {
-      //check the reset type;
       const _emailFailed = email === ''
       if(tab[0].isTabActive) {
         show_modal = true;

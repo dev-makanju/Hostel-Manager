@@ -1,15 +1,18 @@
+import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation'
 
 const PrivateRoute = ({children}) => {
    const  user  = useAuth();
    const router = useRouter();
-   // redirect if not loggedin
-   if(!user.user){
-      router.push('/auth/login');
-   }else{
-      router.push('/dashboard');
-   }
+   useEffect(() => {
+      if (!user.user) {
+        router.push('/auth/login');
+      } else {
+        router.push('/dashboard');
+      }
+    }, [user.user]);
+
    return children;
 }
 
