@@ -16,12 +16,12 @@ const HostelNearYou = () => {
       gridGap: '1em',
    }
    return (
-   <div className='p-3'>
+   <div className='p-4'>
       <div className='flex justify-between mt-4'>
-         <h3 className="font-gilroy font-light">Hostel Nearby</h3>
-         <p className="text-[#868080] font-bold" onClick={seeAll}>see all</p>
+         <h3 className="text-base font-bold">Hostel Nearby</h3>
+         <p className="text-[#868080] text-sx font-bold" onClick={seeAll}>see all</p>
       </div>
-      <div style={parentCard} className='mt-5'>
+      <div style={parentCard} className='mt-5 mb-[6rem]'>
          <HostelCards/>
          <HostelCards/>
          <HostelCards/>

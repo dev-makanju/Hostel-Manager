@@ -1,7 +1,18 @@
-@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@import "../fonts/font.module.css" ;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+body {
+   font-family: 'Proxima Nova Alt';
+   letter-spacing: .2px;
 }
+
+.fade-in {
+   transition: opacity 1.5s ease;
+}
+ 
+.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+ 

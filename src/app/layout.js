@@ -5,9 +5,10 @@ import { Inter } from 'next/font/google'
 import { Header, Footer, SplashScreen } from '@/components'
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from 'react'
-import OnboardingScreen from '@/components/onboarding'
 import Cookies from 'js-cookie'
-
+import { ToastContainer } from 'react-toastify';
+import { AuthProvider } from '@/context/AuthContext'
+import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ['latin'] })
 
 const metadata = {
@@ -25,38 +26,37 @@ export default function RootLayout({ children }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const [loading, setLoading] = useState(isHome)
-  // const [showOnboardingScreen, setShowOnboardingScreen] = useState(false)
-  const [showOnboardingScreen, setShowOnboardingScreen] = useState(
-    Cookies.get('visitedBefore') // Cookie check to see if the user has visited before
-    //set it back to false
-  )
+  
+  const showOnboardScreen = () => {
+    setShowOnboardingScreen(false);
+  }
 
-  const [ isVisisble , seIsVisisble ] = useState(false);
-
-  useEffect(() => {
+  useEffect(() => {    
     setTimeout(() => {
       setLoading(false)
     }, 3000)
     Cookies.set('visitedBefore', 'false', { expires: 365 }) // Expires after 365 days
-  }, [])
+  }, []);
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
-         {/* {loading ?
-          <SplashScreen /> :
-          <>
-            {showOnboardingScreen ? <OnboardingScreen setShowOnboardingScreen={setShowOnboardingScreen} /> :
-              <> */}
-                { isVisisble && <Header /> }
-                {children}
-                { isVisisble && <Footer /> } 
-              {/* </>
-              }
-          </>
-        }  */}
-        {/* <OnboardingScreen /> */}
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <div className='sm:hidden'>
+            {loading ?
+              <SplashScreen/> :
+              <>
+                {/* {showOnboardingScreen ? <OnboardingScreen resetScreen={showOnboardScreen} /> : */}
+                  <>
+                    {<ToastContainer/>}
+                    {children}
+                  </>
+                
+              </>
+            } 
+          </div>
+        </body>
+      </html>
+    </AuthProvider>
   )
 }

@@ -28,7 +28,7 @@ const DashHeader = () => {
       setIsActive(val);
    }
    const submitSearch = () => {
-      router.push('/dashboard/discover')
+      router.push('/dashboard/search');   
    }
 
    return (
@@ -59,7 +59,7 @@ const DashHeader = () => {
          <div className="border-3 flex flex-col gap-4 p-4">
             <div className='flex justify-between items-center'>
                <div class="flex items-center">    
-                  <h1 className="text-xl font-bold">Let's find you the perfect place</h1>
+                  <h1 className="text-lg font-bold">Let's find you the perfect place</h1>
                   <Image src={house} alt="notification icon"/>
                </div>
                <div>
@@ -70,9 +70,9 @@ const DashHeader = () => {
             </div>
             <div>
                <SearchInput 
-               type="text" 
-               placeholder="Search..." 
-               onChange={handleSearchChange}
+                  type="text" 
+                  placeholder="Search..." 
+                  onChange={handleSearchChange}
                />
             </div>
             <div className='flex gap-4 overflow-auto w-[100%]' style={hideScroll}>
@@ -80,7 +80,7 @@ const DashHeader = () => {
                   <HostelTag active={isActive} name={tag} onSelectTag={handleSelectTag}/>
                ))}
             </div>
-            <h1 className="text-lg font-bold">Recommended for you</h1>
+            <h1 className="text-base font-bold">Recommended for you</h1>
          </div>
       </>
    )
