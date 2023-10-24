@@ -1,17 +1,33 @@
 import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation'
+import { usePathname } from "next/navigation"
 
 const PrivateRoute = ({children}) => {
    const  user  = useAuth();
    const router = useRouter();
+   const pathname = usePathname()
+
    useEffect(() => {
+      const authRoutePattern = /^\/dashboard\/\w+/;
       if (!user.user) {
-        router.push('/auth/login');
+         if(pathname === '/auth/login' || 
+            pathname === '/auth/signup' || 
+            pathname === '/auth/forgot-password' || 
+            pathname === '/auth/otp' ||
+            pathname === '/auth/password-otp' ||
+            pathname === '/auth/reset-password') 
+         {
+           return;
+         }
+         router.push('/auth/login');
       } else {
-        router.push('/dashboard');
+         if(authRoutePattern.test(pathname)){
+           return;
+         }
+         router.push('/dashboard');
       }
-    }, [user.user]);
+    }, [!user.user]);
 
    return children;
 }
