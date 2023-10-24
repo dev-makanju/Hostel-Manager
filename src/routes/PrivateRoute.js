@@ -9,6 +9,7 @@ const PrivateRoute = ({children}) => {
    const pathname = usePathname()
 
    useEffect(() => {
+      console.log(!user.user, user.user)
       const authRoutePattern = /^\/dashboard\/\w+/;
       if (!user.user) {
          if(pathname === '/auth/login' || 

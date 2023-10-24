@@ -4,14 +4,20 @@ import { useRouter } from 'next/navigation';
 import HostelCards from '@/components/dashboard/part/HostelCards';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { Checkbox, Slider, Switch, Button } from 'antd';
+import { useAuth } from '@/context/AuthContext';
 
 const Saved = () => {
+   const {logout} = useAuth();
    const router = useRouter();
    const [isFilter, setIsFilter] = useState(false)
    const [ searchFounded , setSearchFounded] = useState(true)
    
    const handlePrev = () => {
       router.back();
+   }
+
+   const handleLogout = () => {
+      logout();
    }
 
    const onChange = (checked) => {
@@ -64,7 +70,10 @@ const Saved = () => {
                         <h2 className='font-bold text-base'>Filter</h2>
                         <h2 className='text-[#C97B2C] text-base'>Reset</h2>
                      </div>
-                     <h2 className='font-bold p-3 text-sm'>I am looking for</h2>
+                     <div className="p-3 flex justify-between items-center gap-4">    
+                        <h2 className='font-bold text-sm'>I am looking for</h2>
+                        <h2 onClick={handleLogout} className='font-bold text-[#e74e3c] p-3 text-sm'>log out</h2>
+                     </div>
                      <div className='flex justify-between w-full p-3'>
                         <div className='flex flex-col gap-4'>
                            <Checkbox className='text-xs'>All</Checkbox>

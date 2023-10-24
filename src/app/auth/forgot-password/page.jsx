@@ -58,8 +58,12 @@ const ForgotPassword = () => {
               if(res.status === 200){
                 setIsSubmiting(false);
                 setEmail('');
+                if(localStorage.getItem('service-email')){
+                  localStorage.removeItem('service-email');
+                }
+                localStorage.setItem('service-email', input.email);
                 SetIsSelectedOption(true);
-                router.push('auth/otp');
+                router.push(`auth/password-otp`);
                 return;
               }
             }catch(e){
